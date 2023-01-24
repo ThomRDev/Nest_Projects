@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  db:
+    # mi pc no aguanta el 5.0
+    image: mongo:4.4.6
+    restart: always # si algo pasa tambien se reinicializa
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_DATABASE: nest-pokemon
+    # para generar un backup en cada cambio
+    volumes:
+      - ./mongo:/data/db
+
+# docker-compose up -d
+# docker rmi 2d38962b1e5e
+# docker-compose down
+# verificar que el estatus este en up
+# docker exec -it 004-pokedex_db_1 bash
